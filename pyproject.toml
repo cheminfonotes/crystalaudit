@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crystalaudit"
+version = "0.1.0"
+description = "Automated crystallographic validation & anomaly attribution for protein structures"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Your Name" }]
+keywords = ["crystallography", "structural-biology", "PDB", "validation", "bioinformatics"]
+dependencies = [
+    "gemmi>=0.6",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "requests",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.30"]
+api = ["fastapi", "uvicorn[standard]", "python-multipart"]
+all = ["streamlit>=1.30", "fastapi", "uvicorn[standard]", "python-multipart"]
+
+[project.scripts]
+crystalaudit = "crystalaudit.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cheminfonotes/crystalaudit"
+Issues = "https://github.com/cheminfonotes/crystalaudit/issues"
+
+[tool.setuptools.packages.find]
+include = ["crystalaudit*"]
